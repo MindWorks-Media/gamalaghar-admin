@@ -5495,7 +5495,6 @@ body.top-menu .navbar-left .customizer-trigger + .top-menu {
 .btn span {
     font-size: 15px;
     display: inline-block;
-    margin-right: 8px;
 }
 .btn.btn-white {
     background: var(--color-white);
