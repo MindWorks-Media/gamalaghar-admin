@@ -80,7 +80,14 @@
                                                     <td>{{ $order->order_number }}</td>
                                                     <td>
                                                         @foreach ($order->orderItems as $item)
-                                                            <p class="mb-0">{{ $item->product->product_code }}</p>
+                                                            <p class="mb-0">
+                                                                {{-- {{ $item->product ? $item->product->product_code : $item->product_name }} --}}
+                                                                @if ($item->product && $item->product->product_code)
+                                                                    {{ $item->product->product_code }}
+                                                                @else
+                                                                    {{ $item->product_name }}
+                                                                @endif
+                                                            </p>
                                                         @endforeach
                                                     </td>
                                                     <td>{{ $order->province }}</td>
@@ -89,13 +96,17 @@
                                                     <td>{{ $order->total_amount }}</td>
                                                     <td>
                                                         @if ($order->order_status == 'Pending')
-                                                            <span class="badge badge-warning rounded">{{ $order->order_status }}</span>
+                                                            <span
+                                                                class="badge badge-warning rounded">{{ $order->order_status }}</span>
                                                         @elseif ($order->order_status == 'processing')
-                                                            <span class="badge badge-info rounded">{{ $order->order_status }}</span>
+                                                            <span
+                                                                class="badge badge-info rounded">{{ $order->order_status }}</span>
                                                         @elseif ($order->order_status == 'completed')
-                                                            <span class="badge badge-success rounded">{{ $order->order_status }}</span>
+                                                            <span
+                                                                class="badge badge-success rounded">{{ $order->order_status }}</span>
                                                         @elseif ($order->order_status == 'declined')
-                                                            <span class="badge badge-danger rounded">{{ $order->order_status }}</span>
+                                                            <span
+                                                                class="badge badge-danger rounded">{{ $order->order_status }}</span>
                                                         @endif
                                                     </td>
                                                     <td>{{ $order->created_at }}</td>
