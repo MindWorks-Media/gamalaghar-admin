@@ -158,6 +158,12 @@
                                 <p class="mb-1"><strong>Address:</strong> {{ $order->province . ", " . $order->city . ", " . $order->area . ", " . $order->shipping_address }}</p>
                                 {{-- <p><strong>Order Time:</strong> {{ $order->created_at }}</p> --}}
                             </div>
+                            @if ($order->comment)  
+                                <div class="col-12">
+                                    <h6 class="mb-3">Comment</h6>
+                                    <p class="mb-1">{{ $order->comment }}</p>
+                                </div>
+                            @endif
                         </div>
 
                     </div>
