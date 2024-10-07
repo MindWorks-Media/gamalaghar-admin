@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::latest()->get();
+        $orders = Order::with('orderItems.product')->latest()->get();
         return view('admin.orders.view_order', compact('orders'));
     }
 

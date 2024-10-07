@@ -62,6 +62,7 @@
                                                 <th>ID</th>
                                                 <th>Fullname</th>
                                                 <th>Order Number</th>
+                                                <th>Products</th>
                                                 <th>Province</th>
                                                 <th>City</th>
                                                 <th>Area</th>
@@ -73,21 +74,37 @@
                                         </thead>
                                         <tbody>
                                             @forelse ($orders as $order)
-                                                <tr>
+                                                <tr class="border-bottom">
                                                     <td>{{ $order->id }}</td>
                                                     <td>{{ $order->fullname }}</td>
                                                     <td>{{ $order->order_number }}</td>
+                                                    <td>
+                                                        @foreach ($order->orderItems as $item)
+                                                            <p class="mb-0">{{ $item->product->product_code }}</p>
+                                                        @endforeach
+                                                    </td>
                                                     <td>{{ $order->province }}</td>
                                                     <td>{{ $order->city }}</td>
                                                     <td>{{ $order->area }}</td>
                                                     <td>{{ $order->total_amount }}</td>
-                                                    <td>{{ $order->order_status }}</td>
+                                                    <td>
+                                                        @if ($order->order_status == 'Pending')
+                                                            <span class="badge badge-warning rounded">{{ $order->order_status }}</span>
+                                                        @elseif ($order->order_status == 'processing')
+                                                            <span class="badge badge-info rounded">{{ $order->order_status }}</span>
+                                                        @elseif ($order->order_status == 'completed')
+                                                            <span class="badge badge-success rounded">{{ $order->order_status }}</span>
+                                                        @elseif ($order->order_status == 'declined')
+                                                            <span class="badge badge-danger rounded">{{ $order->order_status }}</span>
+                                                        @endif
+                                                    </td>
                                                     <td>{{ $order->created_at }}</td>
                                                     <td>
-                                                        <div class="d-flex">
-                                                            <a class="btn btn-primary me-3"
-                                                                href="{{ url('admin/single-order/' . $order->id) }}"><i
-                                                                    class="bi bi-eye"></i></a>
+                                                        <div class="d-flex p-2">
+                                                            <a class="btn btn-primary p-2 lh-1"
+                                                                href="{{ url('admin/single-order/' . $order->id) }}">
+                                                                <i class="bi bi-eye"></i>
+                                                            </a>
                                                         </div>
                                                     </td>
                                                 </tr>

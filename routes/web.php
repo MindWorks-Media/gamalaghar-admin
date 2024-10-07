@@ -98,7 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('admin/setting/delivery-charge', [DeliveryPriceController::class, 'deliveryCharge']);
 
 
-    Route::get('admin/orders', [OrderController::class, 'index']);
+    Route::get('admin/orders', [OrderController::class, 'index'])->name('orders.list');
     Route::get('admin/orders/search', [OrderController::class, 'searchOrder']);
     Route::get('admin/single-order/{id}', [OrderController::class, 'singleorder']);
 
