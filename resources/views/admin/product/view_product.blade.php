@@ -98,6 +98,18 @@
                                                     <td>{{ $product->product_name }}</td>
                                                     <td>{{ $product->product_code }}</td>
                                                     <td>
+                                                        <form action="{{ route('products.update-featured', ['product' => $product->id]) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            <div class="form-check form-switch">
+                                                                <input name="is_featured" class="form-check-input"
+                                                                    type="checkbox" onchange="this.form.submit()"
+                                                                    {{ $product->is_featured == 1 ? 'checked' : '' }}
+                                                                    role="switch" id="flexSwitchCheckDefault">
+                                                            </div>
+                                                        </form>
+                                                    </td>
+                                                    <td>
                                                         <div class="d-flex">
                                                             <a class="btn btn-primary me-3"
                                                                 href="{{ url('admin/products/edit/' . $product->slug) }}"><i
