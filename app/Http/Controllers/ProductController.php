@@ -83,8 +83,8 @@ class ProductController extends Controller
                 }
                 // dd($request->product_image);
                 foreach ($request->file('product_image') as $image) {
-                    $productImage=ProductImage::create([
-                        'product_id'=>$product->id
+                    $productImage = ProductImage::create([
+                        'product_id' => $product->id
                     ]);
                     $productImage->addMedia($image)
                         ->toMediaCollection('product_image');
@@ -206,5 +206,16 @@ class ProductController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
+    }
+
+    public function updateFeaturedStatus(Request $request, Product $product)
+    {
+        if ($product->is_featured == 0) {
+            $product->update(['is_featured' => 1]);
+        } else {
+            $product->update(['is_featured' => 0]);
+        }
+
+        return back()->with('success', 'Product featured status updated successfully!');
     }
 }

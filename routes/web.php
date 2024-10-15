@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('admin/products/view-product/delete/{id}', [ProductController::class, 'destroy']);
     Route::get('admin/products/edit/{slug}', [ProductController::class, 'edit']);
     Route::post('admin/products/update', [ProductController::class, 'update']);
+    Route::post('admin/products/update-featured/{product}', [ProductController::class, 'updateFeaturedStatus'])->name('products.update-featured');
 
 
     Route::get('admin/category/main-category', [MainCategoryController::class, 'index']);
