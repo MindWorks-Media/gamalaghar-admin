@@ -72,6 +72,7 @@
                                                 <th>Image</th>
                                                 <th>Product Name</th>
                                                 <th>Product Code</th>
+                                                <th>Is Featured</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
