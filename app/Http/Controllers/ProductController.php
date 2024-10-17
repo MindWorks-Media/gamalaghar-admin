@@ -21,7 +21,7 @@ class ProductController extends Controller
 
     {
         $Category = MainCategory::with('subCategories')->latest()->get();
-        $size = Size::latest()->get();
+        $size = Size::orderByRaw("FIELD(slug, 'small', 'medium', 'large')")->get();
 
         return view('admin.product.add_product', compact('Category', 'size'));
     }
