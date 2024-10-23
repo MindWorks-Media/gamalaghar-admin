@@ -63,7 +63,7 @@ class ProductController extends Controller
                     'discount' => $request->discount,
                     'product_code' => $request->product_code,
                     'product_price' => $highestPrice,
-
+                    'meta_keywords' => $request->meta_keywords
                 ]);
 
                 // Loop through the arrays and save each product
@@ -137,6 +137,7 @@ class ProductController extends Controller
                     'discount' => $request->discount,
                     'product_code' => $request->product_code,
                     'product_price' => $highestPrice,
+                    'meta_keywords' => $request->meta_keywords
                 ]);
 
                 // Update or add new size and price relationships
