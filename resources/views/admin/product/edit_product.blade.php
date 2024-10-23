@@ -133,6 +133,14 @@
                                                                     @enderror
                                                                 </div>
                                                                 <div class="col-md-12">
+                                                                    <label class="form-label">Meta Keywords</label>
+                                                                    <input type="text" class="form-control" value="{{ $product->meta_keywords }}"
+                                                                        name="meta_keywords" id="product_stock">
+                                                                    @error('meta_keywords')
+                                                                        <p class="text-danger">{{ $message }}</p>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="col-md-12">
                                                                     <label class="form-label">Description</label>
                                                                     <textarea name="description" class="form-control" rows="4">{{ $product->description }}</textarea>
                                                                 </div>

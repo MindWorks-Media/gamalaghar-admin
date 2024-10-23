@@ -118,11 +118,20 @@
                                                                         <p class="text-danger">{{ $message }}</p>
                                                                     @enderror
                                                                 </div>
+
                                                                 <div class="col-md-6">
                                                                     <label class="form-label">Discount %</label>
                                                                     <input type="number" class="form-control"
                                                                         name="discount" id="product_stock">
                                                                     @error('discount')
+                                                                        <p class="text-danger">{{ $message }}</p>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="form-label">Meta Keywords</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="meta_keywords" id="product_stock">
+                                                                    @error('meta_keywords')
                                                                         <p class="text-danger">{{ $message }}</p>
                                                                     @enderror
                                                                 </div>
